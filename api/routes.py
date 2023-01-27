@@ -13,6 +13,7 @@ async def get_all_bookings():
 @user.post('/create_booking')
 async def create_booking(guest: GuestBooking):
     # Predict reserve_date
+    print(dict(guest))
     conn.local.user.insert_one(dict(guest))
     return serializeList(conn.local.user.find())
 
