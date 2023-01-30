@@ -4,10 +4,7 @@ import math
 import numpy as np
 
 class Preprocessor:
-    def load_model(filename):
-        pickle_in = open(filename,"rb")
-        model = pickle.load(pickle_in)
-        return model
+    
 
     def preprocess(self,X,y=None):
         print('Extracting data...')

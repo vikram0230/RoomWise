@@ -9,10 +9,15 @@ import json
 from hotel import Hotel
 
 app = FastAPI()
-preprocessor = Preprocessor()
 
-model_1 = preprocessor.load_model("model_1_....pkl")
-model_2 = preprocessor.load_model("model_2_....pkl")
+def load_model(filename):
+    pickle_in = open(filename,"rb")
+    model = pickle.load(pickle_in)
+    return model
+
+feature_extractor = load_model('feature_extractor.pkl')
+model_1 = load_model("model_1_svc.pkl")
+model_2 = load_model("model_2_rf.pkl")
 
 @app.get('/')
 async def index():
