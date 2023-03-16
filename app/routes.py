@@ -1,28 +1,14 @@
-import os
-import pickle
+import datetime
 import pandas as pd
-from api.db import conn
-from pathlib import Path
+from app.db import conn
 from bson import ObjectId
 from fastapi import APIRouter
-from api.feature_extractor import FeatureExtractor
-from api.models import GuestBooking,GuestReserved
-from api.schema import serializeDict, serializeList
+from datetime import timedelta
+from app.feature_extractor import FeatureExtractor
+from app.models import GuestBooking,GuestReserved
+from app.schema import serializeDict, serializeList, load_pkl_model, get_pickle_path
 
 user = APIRouter()
-
-def get_pickle_path():
-    os.getcwd()
-    current_directory = Path(os.getcwd())
-    pkl_path = os.path.join(current_directory, 'pickle_files')
-    return pkl_path
-
-def load_pkl_model(filename):
-    pickle_path = get_pickle_path()
-    pkl_file = os.path.join(pickle_path, filename + '.pkl')
-    model = pickle.load(open(pkl_file,'rb'))
-    return model
-
 fx = FeatureExtractor()
 model_1 = load_pkl_model("model_1_svc")
 model_2 = load_pkl_model("model_2_rf")
@@ -55,7 +41,7 @@ async def create_booking(guest: GuestBooking):
 
     print(guest_data)
     guest.reserve_date = guest_data['reserve_date']
-        
+
     conn.local.user.insert_one(dict(guest))
     return serializeList(conn.local.user.find())
 

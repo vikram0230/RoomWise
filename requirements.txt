@@ -1,0 +1,7 @@
+pandas
+pathlib
+bson
+fastapi
+pymongo
+pydantic
+uvicorn

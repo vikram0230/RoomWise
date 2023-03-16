@@ -36,13 +36,13 @@ class Preprocessor:
         timeseries_labels = ['arrival_month','arrival_week_number','arrival_day_of_month','arrival_day_of_week',
                 'booking_month', 'booking_week_number', 'booking_day_of_month', 'booking_day_of_week']
 
-        if add_time_series:
-            for label in timeseries_labels:
-                X_[label + "_norm"] = 2 * math.pi * X_[label] / X_[label].max()
-                X_["cos_" + label] = np.cos(X_[label + "_norm"])
-                X_["sin_" + label] = np.sin(X_[label + "_norm"])
+        # if add_time_series:
+        for label in timeseries_labels:
+            X_[label + "_norm"] = 2 * math.pi * X_[label] / X_[label].max()
+            X_["cos_" + label] = np.cos(X_[label + "_norm"])
+            X_["sin_" + label] = np.sin(X_[label + "_norm"])
 
-                X_.drop(labels=[label + '_norm', label], axis=1, inplace=True)
+            X_.drop(labels=[label + '_norm', label], axis=1, inplace=True)
 
         X_.drop(labels=['arrival_date','arrival_year','booking_date'],axis=1,inplace=True)
 

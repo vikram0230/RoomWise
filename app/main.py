@@ -3,10 +3,10 @@ from pydantic import BaseModel
 import uvicorn
 import pickle
 import joblib
-from preprocessing import Preprocessor
+from ml_model.preprocessing import Preprocessor
 import pandas as pd
 import json
-from hotel import Hotel
+from ml_model.hotel import Hotel
 
 app = FastAPI()
 
@@ -27,7 +27,7 @@ async def index():
 async def predict(data:dict):
     df = pd.DataFrame(data, columns=data.keys())
     df = df.infer_objects()
-    processed_data = preprocessor.preprocess(df)
+    processed_data = Preprocessor.preprocess(df)
     model_1_pred = model_1.predict(processed_data)
     print(model_1_pred)
     return {"cancel_pred": int(model_1_pred[0])}
