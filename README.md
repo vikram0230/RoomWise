@@ -1,27 +1,45 @@
-# Customer Analysis System
+# RoomWise
 
-The Customer Analysis System is an end-to-end solution for reserving rooms according to a priority queue by processing and storing data from a customer booking portal. It uses MongoDB and FastAPI to store data in a reliable and scalable database, and provides powerful analysis to help managers make data-driven decisions.
+RoomWise is a highly scalable and intelligent room reservation system that leverages the power of Machine Learning (ML) to prioritize customers and predict cancellations with 90% accuracy. It is designed and developed using Flutter, MongoDB, and FastAPI, and utilizes open hotel data to power the ML pipeline that drives the system's priority queue.
 
-## Key Features
+The system provides a seamless room reservation experience to customers, with the ability to book the available rooms, and manage their bookings all in one place. The ML models integrated into the system help to optimize profits by prioritizing customers based on factors such as their past booking history and predicted likelihood of cancellation.
 
-- MongoDB database for reliable and scalable data storage
-- FastAPI for building an efficient and modern web API
-- Built-in machine learning models for prioritizing customers and predicting cancellations
-- 90% accuracy rate achieved using ML models, such as SVM and Random Forest.
+## Features
+
+- Seamless room reservation experience for customers
+- ML models for prioritizing customers and predicting cancellations with 90% accuracy
+- Open hotel data used to power the ML pipeline
+- Containerized API and database using Docker for scalability and portability
+- Deployed on AWS for high availability and scalability
 
 ## How it Works
 
 The Customer Analysis System is designed to process and store data from a customer booking portal. Data is collected and stored in MongoDB using FastAPI, and can be queried as required.
 
-The system also includes built-in machine learning models for prioritizing customers and predicting cancellations. These models include Support Vector Machines for predicting cancellations and Random Forest for prioritizing customers to achieve a high level of accuracy.
+The system also includes built-in machine learning models for prioritising customers and predicting cancellations. These models include Support Vector Machines for predicting cancellations and Random Forest for prioritising customers to achieve a high level of accuracy.
 
-Finally, the Customer Analysis System provides managers with the ability to analyze trends in customer behavior, identify potential areas for improvement, and create data-driven mitigation plans to reduce cancellations and improve profitability.
+Finally, the Customer Analysis System provides managers with the ability to analyse trends in customer behaviour, identify potential areas for improvement, and create data-driven mitigation plans to reduce cancellations and improve profitability.
 
-## Getting Started
+## Technologies Used
 
-To get started with the Customer Analysis System, follow these steps:
+- Flutter - Cross-platform mobile app development framework
+- MongoDB - Document-oriented NoSQL database
+- FastAPI - Web framework for building APIs with Python 3.6+ based on standard Python type hints
+- Docker - Platform for building, shipping, and running applications in containers
+- AWS - Cloud computing platform for deploying and scaling web applications
 
-1. Install MongoDB and FastAPI on your local machine
-2. Clone the repository and install the required dependencies
-3. Import the data from your customer booking portal into the MongoDB database
-4. Start the FastAPI server and request the API the customer data
+## Installation and Setup
+
+1. Clone the repository to your local machine.
+2. Install Docker and Docker Compose.
+3. Navigate to the root directory of the project and run the following command to start the system:
+
+    ```powershell
+    docker-compose up
+    ```
+
+4. Access the system by opening the following URL in your web browser:
+
+    ```powershell
+    http://localhost:8080/
+    ```
