@@ -2,7 +2,7 @@
 
 RoomWise is a highly scalable and intelligent room reservation system that leverages the power of Machine Learning (ML) to prioritize customers and predict cancellations with 90% accuracy. It is designed and developed using Flutter, MongoDB, and FastAPI, and utilizes open hotel data to power the ML pipeline that drives the system's priority queue.
 
-The system provides a seamless room reservation experience to customers, with the ability to book the available rooms, and manage their bookings all in one place. The ML models integrated into the system help to optimize profits by prioritizing customers based on factors such as their past booking history and predicted likelihood of cancellation.
+The system provides a seamless room reservation experience to customers with the ability to book the available rooms and assists hotel managers manage all their reservations in one place. The ML models integrated into the system help to optimize profits by prioritizing customers based on factors such as their past booking history and predicted likelihood of cancellation.
 
 ## Features
 

@@ -3,7 +3,7 @@ import pandas as pd
 from app.db import conn
 from bson import ObjectId
 from fastapi import APIRouter
-from datetime import timedelta
+from datetime import timedelta,datetime
 from app.feature_extractor import FeatureExtractor
 from app.models import GuestBooking,GuestReserved
 from app.schema import serializeDict, serializeList, load_pkl_model, get_pickle_path
@@ -25,6 +25,7 @@ async def create_booking(guest: GuestBooking):
 
     df = pd.DataFrame([guest_data])
     df_transformed = fx.transform(df)
+    print(df_transformed.values)
 
     pred_1 = model_1.predict(df_transformed)
     print('Model 1 Prediction: ',pred_1)
@@ -32,7 +33,7 @@ async def create_booking(guest: GuestBooking):
     print('Model 2 Prediction:', pred_2)
 
     # Calculates the lead time for cancellation
-    if pred_1[0] == 1:   
+    if pred_1[0] == 1 or (pred_1[0] == 0 and int(pred_2) > 5):
         date_object = datetime.strptime(guest_data['arrival_date'], '%Y-%m-%d').date()
         guest_data['reserve_date'] = (date_object + timedelta(days=-int(pred_2))).strftime('%Y-%m-%d')
     # If no cancellation is predicted, the room is reserved for the guest

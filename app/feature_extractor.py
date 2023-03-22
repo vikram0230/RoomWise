@@ -20,14 +20,14 @@ class FeatureExtractor(TransformerMixin):
         X_['arrival_year'] = X_['arrival_date'].dt.year
         X_['arrival_month'] = X_['arrival_date'].dt.month
         X_['arrival_day_of_month'] = X_['arrival_date'].dt.day
-        X_['arrival_day_of_week'] = X_['arrival_date'].dt.day_of_week
+        X_['arrival_day_of_week'] = X_['arrival_date'].dt.day_of_week + 1
         X_['arrival_week_number'] = X_['arrival_date'].dt.isocalendar().week
 
         X_['booking_date'] = pd.to_datetime(X_['booking_date'], format='%Y-%m-%d')
         X_['booking_year'] = X_['booking_date'].dt.year
         X_['booking_month'] = X_['booking_date'].dt.month
         X_['booking_day_of_month'] = X_['booking_date'].dt.day
-        X_['booking_day_of_week'] = X_['booking_date'].dt.day_of_week
+        X_['booking_day_of_week'] = X_['booking_date'].dt.day_of_week + 1
         X_['booking_week_number'] = X_['booking_date'].dt.isocalendar().week
 
         X_['departure_date'] = pd.to_datetime(X_['departure_date'], format='%Y-%m-%d')
@@ -60,7 +60,8 @@ class FeatureExtractor(TransformerMixin):
 
         X_.drop(labels=['arrival_date','arrival_year','booking_date','booking_year','departure_date'],axis=1,inplace=True)
 
-        # self.__view_data_specs(X_)
+        print('Extraction Done')
+        self.__view_data_specs(X_)
         return X_
 
     # def __null_handler(self,X):
